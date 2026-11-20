@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f9e2eb">
+<title>Shivani Day 🌸</title>
+
+<style>
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+ margin:0;
+ font-family:'Trebuchet MS',sans-serif;
+ color:#69465f;
+ background:linear-gradient(135deg,#fff8fa,#fce5ed,#f2eafa);
+ text-align:center;
+ overflow-x:hidden;
+}
+
+nav{
+ padding:18px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.brand{
+ color:#d96b91;
+ font-weight:900;
+ letter-spacing:2px;
+}
+
+button{
+ border:0;
+ border-radius:30px;
+ padding:13px 22px;
+ margin:8px;
+ background:linear-gradient(110deg,#e88fac,#ba83bd);
+ color:white;
+ font-weight:bold;
+ cursor:pointer;
+ transition:.2s;
+}
+
+button:hover{transform:translateY(-3px)}
+
+.hero{
+ min-height:85vh;
+ display:grid;
+ place-items:center;
+ padding:25px;
+}
+
+.hero-card{
+ background:#ffffffcc;
+ border-radius:30px;
+ padding:45px 25px;
+ max-width:700px;
+ width:100%;
+ box-shadow:0 20px 60px #b9577c25;
+}
+
+h1{
+ font-family:Georgia,serif;
+ font-size:clamp(45px,9vw,85px);
+ color:#d96b91;
+ margin:15px 0;
+}
+
+.nickname{
+ font-size:29px;
+ color:#a45c8d;
+ font-weight:bold;
+}
+
+p{line-height:1.9}
+
+section{
+ padding:55px 20px;
+ max-width:950px;
+ margin:auto;
+}
+
+h2{
+ font-family:Georgia,serif;
+ color:#d96b91;
+ font-size:38px;
+}
+
+.panel{
+ background:#ffffffcc;
+ border-radius:25px;
+ padding:30px;
+ box-shadow:0 12px 35px #b9577c18;
+}
+
+.letter{
+ display:none;
+ background:#fff8f5;
+ padding:25px;
+ border-radius:20px;
+ line-height:1.9;
+ text-align:left;
+ white-space:pre-line;
+}
+
+.letter.show{
+ display:block;
+ animation:fade .4s;
+}
+
+@keyframes fade{
+ from{opacity:0;transform:translateY(10px)}
+ to{opacity:1}
+}
+
+.cake{
+ font-size:110px;
+ cursor:pointer;
+ transition:.3s;
+}
+
+.cake:hover{transform:scale(1.1)}
+
+#cakeMessage{
+ color:#b9577c;
+ font-weight:bold;
+ min-height:30px;
+}
+
+.petal{
+ position:fixed;
+ top:-30px;
+ z-index:10;
+ pointer-events:none;
+ animation:fall linear forwards;
+}
+
+@keyframes fall{
+ to{
+  transform:translate(var(--drift),110vh) rotate(650deg);
+  opacity:0;
+ }
+}
+
+footer{
+ padding:35px;
+ color:#ad8a9c;
+}
+
+/* PASSWORD LOCK */
+
+#lockScreen{
+ position:fixed;
+ inset:0;
+ z-index:99999;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ padding:20px;
+ background:linear-gradient(135deg,#fff8fa,#fce5ed,#f2eafa);
+}
+
+.lock-card{
+ background:#ffffffdd;
+ padding:40px 25px;
+ border-radius:30px;
+ width:100%;
+ max-width:420px;
+ box-shadow:0 20px 60px #b9577c25;
+}
+
+.lock-card h2{
+ font-family:Georgia,serif;
+ color:#d96b91;
+ font-size:35px;
+}
+
+.lock-card p{color:#a45c8d}
+
+#passwordInput{
+ width:100%;
+ padding:15px;
+ border:2px solid #f0c5d5;
+ border-radius:25px;
+ outline:none;
+ text-align:center;
+ font-size:17px;
+ margin:15px 0;
+}
+
+#passwordError{
+ color:#d94b70;
+ font-weight:bold;
+ min-height:25px;
+}
+
+#websiteContent{
+ display:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+
+<div id="lockScreen">
+ <div class="lock-card">
+
+  <div style="font-size:65px">🔐🌸</div>
+
+  <h2>Shivani Day</h2>
+
+  <p>A little surprise is waiting for you! 💗</p>
+  <p>Enter the secret password to continue.</p>
+
+  <input
+   type="password"
+   id="passwordInput"
+   placeholder="Enter Password"
+   autocomplete="off"
+  >
+
+  <button type="button" id="unlockBtn">
+   Unlock Surprise 💗
+  </button>
+
+  <div id="passwordError"></div>
+
+  <div style="font-size:25px">🌸 🎀 🌸</div>
+
+ </div>
+</div>
+
+
+<!-- MAIN WEBSITE -->
+
+<div id="websiteContent">
+
+<nav>
+ <div class="brand">🌸 SHIVANI DAY</div>
+ <button id="musicBtn">♫ Play Music</button>
+</nav>
+
+<!-- HERO -->
+
+<div class="hero">
+ <div class="hero-card">
+
+  <div style="font-size:55px">🌸🎀🌸</div>
+
+  <div class="brand">SHIVANI DAY</div>
+
+  <h1>Happy Birthday</h1>
+
+  <div class="nickname">Shivuu 💗</div>
+
+  <p>
+   Today's someone's special day, a day that you and I
+   will celebrate and remember for our entire lives.
+
+   This day will always be my favourite day,
+   and I will never forget it.
+
+   Because today is all about you! 🌸
+  </p>
+
+  <a href="#letter">
+   <button>Your Secret Letter 💌</button>
+  </a>
+
+  <a href="#cake">
+   <button>Birthday Cake 🎂</button>
+  </a>
+
+ </div>
+</div>
+
+<!-- SECRET LETTER -->
+
+<section id="letter">
+ <h2>A Little Note For You 💌</h2>
+
+ <div class="panel">
+
+  <div style="font-size:75px">💌</div>
+
+  <button id="letterBtn">Open Your Letter</button>
+
+  <div class="letter" id="letterText">
+Dear Shivuu,
+
+Happy Birthday to one of my favourite people! 🥳
+
+Thank you for all the laughs, random conversations,
+silly moments and memories.
+
+I hope this year brings you loads of happiness,
+exciting adventures and everything you've been wishing for.
+
+Never stop being your funny, wonderful self.
+
+And remember: no matter how old you get,
+you're still legally required to tolerate my nonsense. 😂
+
+Have the BEST birthday, Shivani!
+
+Keep blooming, bestie. 🌸
+
+— Your partner in nonsense 💗
+  </div>
+
+ </div>
+</section>
+
+<!-- CAKE -->
+
+<section id="cake">
+ <h2>Make A Birthday Wish! 🎂</h2>
+
+ <div class="panel">
+
+  <div class="cake" id="cakeEmoji">🎂</div>
+
+  <p>Tap the cake to make a wish!</p>
+
+  <button id="cakeBtn">Make A Wish ✨</button>
+
+  <div id="cakeMessage"></div>
+
+ </div>
+</section>
+
+<footer>
+ Made with friendship, petals and a suspicious
+ amount of silliness. 🌸
+ <br><br>
+ Happy Birthday, Shivuu! 💗
+</footer>
+
+</div>
+
+
+<script>
+
+// PASSWORD UNLOCK
+
+function unlockWebsite(){
+
+ const input = document.getElementById("passwordInput");
+ const error = document.getElementById("passwordError");
+
+ if(input.value.trim() === "amata"){
+
+  document.getElementById("lockScreen").style.display = "none";
+
+  document.getElementById("websiteContent").style.display = "block";
+
+  document.body.style.overflowX = "hidden";
+
+  window.scrollTo(0,0);
+
+  shower(35);
+
+ }else{
+
+  error.textContent = "Incorrect password! Try again. 💗";
+
+  input.value = "";
+  input.focus();
+
+ }
+
+}
+
+// Direct button click
+
+document.getElementById("unlockBtn")
+.addEventListener("click", unlockWebsite);
+
+// Also unlock when Enter is pressed
+
+document.getElementById("passwordInput")
+.addEventListener("keydown", function(event){
+
+ if(event.key === "Enter"){
+  event.preventDefault();
+  unlockWebsite();
+ }
+
+});
+
+
+// FALLING PETALS
+
+function shower(amount=20){
+
+ const symbols=['🌸','🌷','✿'];
+
+ for(let i=0;i<amount;i++){
+
+  const petal=document.createElement('span');
+
+  petal.className='petal';
+
+  petal.textContent=
+   symbols[Math.floor(Math.random()*symbols.length)];
+
+  petal.style.left=Math.random()*100+'vw';
+
+  petal.style.fontSize=(15+Math.random()*20)+'px';
+
+  petal.style.setProperty(
+   '--drift',
+   (Math.random()*180-90)+'px'
+  );
+
+  petal.style.animationDuration=(4+Math.random()*5)+'s';
+
+  document.body.appendChild(petal);
+
+  setTimeout(()=>petal.remove(),9500);
+
+ }
+
+}
+
+let petalInterval = setInterval(()=>shower(8),4000);
+
+
+// SECRET LETTER
+
+document.getElementById('letterBtn')
+.addEventListener('click',function(){
+
+ const letter=document.getElementById('letterText');
+
+ letter.classList.toggle('show');
+
+ this.textContent=letter.classList.contains('show')
+  ?'Close Letter 💌'
+  :'Open Your Letter';
+
+ shower(20);
+
+});
+
+
+// INTERACTIVE CAKE
+
+let wished=false;
+
+function makeWish(){
+
+ wished=!wished;
+
+ document.getElementById('cakeEmoji').textContent=
+  wished?'🧁':'🎂';
+
+ document.getElementById('cakeMessage').textContent=
+  wished
+  ?'Wish sent to the universe! May it come true, Shivuu! 🌟'
+  :'The cake is back! Make another wish!';
+
+ shower(30);
+
+}
+
+document.getElementById('cakeEmoji')
+.addEventListener('click',makeWish);
+
+document.getElementById('cakeBtn')
+.addEventListener('click',makeWish);
+
+
+// ORIGINAL BACKGROUND MELODY
+
+let audio=null;
+let playing=false;
+let timer=null;
+let noteIndex=0;
+
+const melody=[
+ 523,659,784,659,
+ 587,698,880,698,
+ 523,587,659,523
+];
+
+function playNote(){
+
+ if(!playing)return;
+
+ const oscillator=audio.createOscillator();
+ const volume=audio.createGain();
+
+ oscillator.frequency.value=melody[noteIndex%melody.length];
+ oscillator.type='sine';
+
+ volume.gain.setValueAtTime(.001,audio.currentTime);
+
+ volume.gain.exponentialRampToValueAtTime(
+  .07,audio.currentTime+.05
+ );
+
+ volume.gain.exponentialRampToValueAtTime(
+  .001,audio.currentTime+.4
+ );
+
+ oscillator.connect(volume);
+ volume.connect(audio.destination);
+
+ oscillator.start();
+ oscillator.stop(audio.currentTime+.45);
+
+ noteIndex++;
+
+ timer=setTimeout(playNote,360);
+
+}
+
+document.getElementById('musicBtn')
+.addEventListener('click',async function(){
+
+ try{
+
+  if(!audio){
+   audio=new(window.AudioContext||window.webkitAudioContext)();
+  }
+
+  if(audio.state==='suspended'){
+   await audio.resume();
+  }
+
+  playing=!playing;
+
+  if(playing){
+   playNote();
+   this.textContent='Ⅱ Pause Music';
+  }else{
+   clearTimeout(timer);
+   this.textContent='♫ Play Music';
+  }
+
+ }catch(error){
+  this.textContent='Music unavailable';
+ }
+
+});
+
+</script>
+
+</body>
+  </html>
+                                   
